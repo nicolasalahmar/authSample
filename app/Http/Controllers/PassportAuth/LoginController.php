@@ -110,7 +110,8 @@ class LoginController extends Controller
     {
         $response = auth()->user();
 
-        $response['token'] = auth()->user()->createToken('Laravel Password Grant Client')->accessToken;
+        $response['personal_access_token'] = auth()->user()->createToken('Laravel Password Grant Client');
+        $response['refresh_token'] = auth()->user()->createToken('Laravel Password Grant Client')->accessToken;
 
         return $response;
     }
