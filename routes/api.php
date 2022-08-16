@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\PassportAuth;
+use App\Http\Controllers\PassportAuth;
 
-use App\Http\Controllers\PassportAuth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
-    Route::post('/login', [LoginController::class,'login'])->name('login.api');
+    Route::post('/login', [PassportAuth\LoginController::class,'login'])->name('login.api');
     Route::post('/register', [PassportAuth\RegisterController::class,'register'])->name('register.api');
 });
 
