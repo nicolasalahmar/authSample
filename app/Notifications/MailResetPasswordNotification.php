@@ -6,7 +6,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Lang;
 class MailResetPasswordNotification extends ResetPassword
-{
+{//todo this is for api
     use Queueable;
     protected $pageUrl;
     public $token;
