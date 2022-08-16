@@ -1,0 +1,3 @@
+GET http://localhost:8000/api/email/verify/24/9a54f8e06ad2bf67ab0db7f684f5d0123a6bc443?expires=1660554824&signature=36c2d686962a72b593d72289c57668ff72a684f902daae4145de1c13cd6d6110
+Authorization: Bearer {{user_token}}
+###
