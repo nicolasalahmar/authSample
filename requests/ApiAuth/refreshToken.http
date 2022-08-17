@@ -1,4 +1,4 @@
-POST {{host}}/api/refreshToken
+POST {{host}}/api/refreshtoken
 Content-Type: application/json
 
 {
