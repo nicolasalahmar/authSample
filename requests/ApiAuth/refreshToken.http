@@ -1,9 +1,8 @@
-POST {{host}}/api/login
+POST {{host}}/api/refreshToken
 Content-Type: application/json
 
 {
-    "email": "nicolasalahmar@gmail.com",
-    "password": "Nanadbeh12"
+    "refresh_token": "{{refresh_token}}"
 }
 
 > {%
@@ -13,4 +12,5 @@ client.global.set("refresh_token", response.body.refresh_token);
         client.assert(response.status === 200, "Response status is not 200");
     });
 %}
+
 ###

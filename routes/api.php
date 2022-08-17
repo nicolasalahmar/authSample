@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login', [PassportAuth\LoginController::class,'login'])->name('login.api');
+    Route::post('/refreshToken', [PassportAuth\LoginController::class,'refreshToken'])->name('refreshToken.api');
     Route::post('/register', [PassportAuth\RegisterController::class,'register'])->name('register.api');
 });
 

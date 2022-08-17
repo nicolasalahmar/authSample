@@ -9,8 +9,8 @@ Content-Type: application/json
 }
 > {%
 client.global.set("user_token", response.body.token);
-    client.test("status code 201", function() {
-        client.assert(response.status === 201, "Response status is not 201");
+    client.test("status code 200", function() {
+        client.assert(response.status === 200, "Response status is not 200");
     });
 %}
 ###
