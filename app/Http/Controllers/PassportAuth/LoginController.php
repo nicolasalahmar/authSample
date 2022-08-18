@@ -90,37 +90,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        $oClient = OClient::where('password_client', 1)->first();
-
-        $response = Http::asForm()->post('http://localhost:8001/oauth/token', [  //todo i am using this port because serve is not a real server which requires  me to run two servers at all times but this should probably be changed in production
-            'grant_type' => 'password',
-            'client_id' => $oClient->id,
-            'client_secret' => $oClient->secret,
-            'username' => $request->email,
-            'password' => $request->password,
-            'scope' => '*',
-        ]);
-        return json_decode((string) $response->getBody(), true);
-    }
-
-    protected function refreshToken(Request $request)
-    {
-        $request->validate([
-            'refresh_token'=>'required',
-        ]);
-
-        //todo we may need to revoke all past tokens in here or we need a really good job to automate the revoking process
-
-        $oClient = OClient::where('password_client', 1)->first();
-
-        $response = Http::asForm()->post('http://localhost:8001/oauth/token', [
-            'grant_type' => 'refresh_token',
-            'refresh_token' => $request->refresh_token,
-            'client_id' => $oClient->id,
-            'client_secret' => $oClient->secret,
-            'scope' => '*',
-        ]);
-
-        return $response->json();
+        //
     }
 }

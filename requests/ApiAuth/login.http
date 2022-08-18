@@ -1,14 +1,17 @@
-POST {{host}}/api/login
+POST {{host}}/api/oauth/token
 Content-Type: application/json
 
 {
-    "email": "nicolasalahmar@gmail.com",
+    "grant_type": "password",
+    "username": "nicolasalahmar@gmail.com",
     "password": "Nanadbeh12"
 }
 
 > {%
-client.global.set("user_token", response.body.access_token);
-client.global.set("refresh_token", response.body.refresh_token);
+if(response.body.access_token!=null)
+    client.global.set("user_token", response.body.access_token);
+if(response.body.refresh_token!=null)
+    client.global.set("refresh_token", response.body.refresh_token);
     client.test("status code 200", function() {
         client.assert(response.status === 200, "Response status is not 200");
     });

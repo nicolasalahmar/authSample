@@ -17,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
-    Route::post('/login', [PassportAuth\LoginController::class,'login'])->name('login.api');
-    Route::post('/refreshtoken', [PassportAuth\LoginController::class,'refreshToken'])->name('refreshToken.api');
     Route::post('/resetpassword', [PassportAuth\ForgotPasswordController::class,'sendResetLinkEmail'])->name('resetpassword.api');
     Route::post('/register', [PassportAuth\RegisterController::class,'register'])->name('register.api');
 });
 
+Route::group(['middleware' => ['cors', 'json.response','oauth']], function () {
+    Route::post('/oauth/token', [Laravel\Passport\Http\Controllers\AccessTokenController::class,'issueToken'])->name('login.api');
+});
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [PassportAuth\LoginController::class,'logout'])->name('logout.api');
